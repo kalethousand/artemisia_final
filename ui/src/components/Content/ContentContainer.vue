@@ -380,7 +380,7 @@ export default {
     handleActiveElement(el) {
       if (this.activeElement !== el) {
         this.activeElement = el
-        this.handleElementActiveHistoryChange(el)
+        // this.handleElementActiveHistoryChange(el)
       }
     },
 
