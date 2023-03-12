@@ -3,7 +3,7 @@
     :retain-focus="false"
     :value="dialogOpen"
     :width="`${setDialogImageContainerToImageWidth}px`"
-    content-class="dialog-container"
+    :content-class="isMobile ? 'dialog-container mobile-dialog' : 'dialog-container'"
     @click:outside="closeModal()"
     @keydown.esc="closeModal()"
   >
@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
     dialogHeight: null,
@@ -42,6 +46,15 @@ export default {
       return encodeURI(this.image.src)
     },
     setDialogImageContainerToImageWidth() {
+      if (this.isMobile && this.image !== null) {
+        const updatedImage = this.setImageDimensions(this.image.src)
+        const { width } = updatedImage
+        const { height } = updatedImage
+        const imageRatio = width / height
+        const newImageHeight = window.innerHeight
+        const newImageWidth = newImageHeight * imageRatio
+        return newImageWidth
+      }
       if (this.image !== null) {
         const updatedImage = this.setImageDimensions(this.image.src)
         const { width } = updatedImage
@@ -102,6 +115,14 @@ export default {
         font-size: 4rem;
       }
     }
+  }
+}
+
+.mobile-dialog {
+  height: 90vh;
+
+  .toolbar-container {
+    display: none;
   }
 }
 

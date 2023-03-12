@@ -5,10 +5,11 @@
         v-if="isTitle"
         :id="`${componentId}-title`"
         class="title-container"
-        :style="`${titleContainerHeight}; ${titleContainerPosition}; background-color: ${backgroundColor}`"
+        :style="`${titleContainerHeight}; ${titleContainerPosition}; ${titleContainerIsMobile}; background-color: ${backgroundColor}`"
       >
         <TitleContent
           :breakpoint="breakpoint"
+          :is-mobile="isMobile"
           :intersection-ratio="title.intersectionRatio"
           :title-text="titleText"
           :is-active="title.isVisible"
@@ -39,6 +40,10 @@ export default {
       required: true,
     },
     isActive: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
       type: Boolean,
       default: false,
     },
@@ -110,6 +115,10 @@ export default {
 
     titleContainerHeight() {
       return this.holdAtTop ? "height: 100vh" : "height: 75vh"
+    },
+
+    titleContainerIsMobile() {
+      return this.isMobile ? "width: 90%; left: 5%" : "width: 80%"
     },
 
     titleContainerPosition() {
@@ -194,7 +203,7 @@ export default {
   width: 100%;
   position: absolute;
   top: 0;
-  border: 2px solid red;
+  // border: 2px solid red;
 
   .title-container {
     width: 80%;

@@ -1,9 +1,14 @@
 <template>
-  <div class="gallery-slide1">
-    <div class="gallery-slide-title">
+  <div id="slide" :class="isMobile ? 'gallery-slide1 gallery-slide-mobile' : 'gallery-slide1'">
+    <div :class="isMobile ? 'gallery-slide-title slide-mobile' : 'gallery-slide-title'">
       <h3>Caitlin &amp; Dillon</h3>
     </div>
-    <div v-for="(image, index) in images" :key="image.id" class="gallery-slide-img" @click="handleSelectImg(image)">
+    <div
+      v-for="(image, index) in images"
+      :key="image.id"
+      :class="isMobile ? 'gallery-slide-img mobile-slide-img' : 'gallery-slide-img'"
+      @click="handleSelectImg(image)"
+    >
       <v-img
         eager
         :src="image.src"
@@ -14,7 +19,7 @@
       >
       </v-img>
     </div>
-    <GalleryDialog :dialog-open="isDialogOpen" :image="selectedImage" @close="closeModal()" />
+    <GalleryDialog :dialog-open="isDialogOpen" :image="selectedImage" :is-mobile="isMobile" @close="closeModal()" />
   </div>
 </template>
 
@@ -31,6 +36,10 @@ export default {
   components: { GalleryDialog },
   props: {
     active: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
       type: Boolean,
       default: false,
     },

@@ -1,10 +1,12 @@
 /* Breakpoint Font Sizes */
 
 .xs-title {
-  font-size: 3rem;
+  font-size: 6.2rem;
+  font-weight: 400;
+  letter-spacing: 0.3rem;
 }
 .sm-title {
-  font-size: 4rem;
+  font-size: 10rem;
 }
 .md-title {
   font-size: 14rem;
@@ -17,10 +19,10 @@
 }
 
 .xs-subtitle {
-  font-size: 1rem;
+  font-size: 2.5rem;
 }
 .sm-subtitle {
-  font-size: 1rem;
+  font-size: 3rem;
 }
 .md-subtitle {
   font-size: 3rem;
@@ -33,12 +35,13 @@
 }
 
 .xs-body {
-  font-family: "MoniqaLightParagraph";
-  font-size: 2.8rem;
-  line-height: 3rem;
+  font-family: "MoniqaMedParagraph";
+  font-size: 2.4rem;
+  letter-spacing: 0.2rem;
+  line-height: 2.4rem;
 }
 .sm-body {
-  font-family: "MoniqaLightParagraph";
+  font-family: "MoniqaMedParagraph";
   font-size: 2.8rem;
   line-height: 3rem;
 }
@@ -85,11 +88,13 @@
 }
 
 .xs-nav {
-  font-family: "MoniqaSemiBoldParagraph";
-  font-size: 1.8rem;
+  letter-spacing: 1rem;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 .sm-nav {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
 }
 .md-nav {
   font-size: 1.4rem;
@@ -99,4 +104,25 @@
 }
 .xl-nav {
   font-size: 1.8rem;
+}
+
+.xs-input {
+  color: var(--beige);
+  font-size: 1.4rem;
+}
+.sm-input {
+  color: var(--beige);
+  font-size: 1.4rem;
+}
+.md-input {
+  color: var(--beige);
+  font-size: 1.4rem;
+}
+.lg-input {
+  color: var(--beige);
+  font-size: 1.6rem;
+}
+.xl-input {
+  color: var(--beige);
+  font-size: 1.6rem;
 }

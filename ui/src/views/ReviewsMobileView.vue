@@ -1,18 +1,18 @@
 <template>
-  <div class="reviews-view-container">
-    <div id="reviews-image-1" :class="`background-image-container ${backgroundImageActive}`">
-      <div class="reviews-content-image"></div>
-      <div class="reviews-background-image"></div>
+  <div class="reviews-mobile-view-container">
+    <div id="reviews-mobile-image-1" :class="`background-image-container ${backgroundImageActive}`">
+      <div class="reviews-mobile-content-image"></div>
+      <div class="reviews-mobile-background-image"></div>
     </div>
-    <div class="reviews-text-container">
+    <div class="reviews-mobile-text-container">
       <ContentTransition
         :is-active="set1IsActive"
         no-translate-y
-        container-id="reviews-content-set-1"
-        class="reviews-content-set-1"
+        container-id="reviews-mobile-content-set-1"
+        class="reviews-mobile-content-set-1"
       >
-        <div class="reviews-set-1">
-          <div class="reviews-text1">
+        <div class="reviews-mobile-set-1">
+          <div class="reviews-mobile-text1">
             <p :class="`${breakpoint.name}-body-bold`">
               Our wedding in 2021 was exceptionally better thanks to Kaytee, with Artemisia. Dillon and I were so
               positively overwhelmed with how great the tables, bouquets, and the arbor looked. She NAILED our simple,
@@ -28,11 +28,11 @@
       <ContentTransition
         :is-active="true"
         no-translate-y
-        container-id="reviews-content-set-2"
-        class="reviews-content-set-2"
+        container-id="reviews-mobile-content-set-2"
+        class="reviews-mobile-content-set-2"
       >
-        <div :class="`reviews-set-2 ${set2IsActive}`">
-          <div class="reviews-text2">
+        <div :class="`reviews-mobile-set-2 ${set2IsActive}`">
+          <div class="reviews-mobile-text2">
             <p :class="`${breakpoint.name}-body-bold`">
               We hired Kaytee for our July 2021 wedding and she went above and beyond what our floral vision was and it
               was better than we could have imagined. Every aspect was perfect from the bouquets, arch decor,
@@ -75,7 +75,7 @@ export default {
     },
   },
   data: () => ({
-    idArray: ["reviews-content-set-1", "reviews-image-1", "reviews-content-set-2"],
+    idArray: ["reviews-mobile-content-set-1", "reviews-mobile-image-1", "reviews-mobile-content-set-2"],
     contentElements: null,
     observer: null,
     reviews: {
@@ -130,15 +130,15 @@ export default {
       }
       const handleIntersectionEvent = entries => {
         entries.forEach(entry => {
-          if (entry.target.id === `reviews-content-set-1`) {
+          if (entry.target.id === `reviews-mobile-content-set-1`) {
             this.reviewsContentSet1.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.reviewsContentSet1.isVisible = this.entryVisible(entry.intersectionRatio)
           }
-          if (entry.target.id === `reviews-image-1`) {
+          if (entry.target.id === `reviews-mobile-image-1`) {
             this.reviewsImageSet1.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.reviewsImageSet1.isVisible = this.entryVisible(entry.intersectionRatio)
           }
-          if (entry.target.id === `reviews-content-set-2`) {
+          if (entry.target.id === `reviews-mobile-content-set-2`) {
             this.reviewsContentSet2.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.reviewsContentSet2.isVisible = this.entryVisible(entry.intersectionRatio)
           }
@@ -161,42 +161,39 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.reviews-view-container {
-  height: 180vh;
+.reviews-mobile-view-container {
+  height: 260vh;
   width: 100%;
   position: relative;
 
   .background-image-container {
     height: 180vh;
-    max-height: 90rem;
     width: 80vw;
+
     position: sticky;
-    top: 30vh;
-    opacity: 0;
+    top: 0vh;
+    opacity: 1;
     margin-left: 4.65vw;
     transition-delay: 0.5s;
     transition: 0.5s;
 
-    .reviews-content-image {
-      border: 1px solid blue;
+    .reviews-mobile-content-image {
       position: absolute;
       top: -10vh;
-      height: 220vh;
-
-      max-height: 120rem;
-      width: 100vw;
+      left: -35vh;
+      height: 320vh;
+      width: 220vw;
       background: url("../assets/images/asset4/asset4Image.png");
       background-repeat: no-repeat;
       background-size: contain;
     }
 
-    .reviews-background-image {
+    .reviews-mobile-background-image {
       position: relative;
-      margin: 0 auto;
       top: -10vh;
-      height: 220vh;
-      max-height: 120rem;
-      width: 100vw;
+      left: -32vh;
+      height: 320vh;
+      width: 220vw;
       background: url("../assets/images/asset4/asset4Container.png");
       background-repeat: no-repeat;
       background-size: contain;
@@ -208,28 +205,24 @@ export default {
     transition: 0.15s;
   }
 
-  .reviews-content-set-1 {
-    // border: 1px solid blue;
+  .reviews-mobile-content-set-1 {
     height: 90rem;
     width: 100%;
-    // position: relative;
     position: absolute;
-    top: -10vh;
+    top: -20vh;
     padding-top: 5vh;
 
-    .reviews-set-1 {
+    .reviews-mobile-set-1 {
       position: sticky;
-      top: 32vh;
+      top: 20vh;
       display: flex;
       align-items: center;
-      // border: 1px solid green;
 
-      .reviews-text1 {
+      .reviews-mobile-text1 {
         color: var(--beige);
         width: 100%;
         max-width: 110rem;
         margin: 0 auto;
-        padding: 4rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -237,28 +230,25 @@ export default {
     }
   }
 
-  .reviews-content-set-2 {
-    // border: 1px solid blue;
-    // height: 60rem;
+  .reviews-mobile-content-set-2 {
     width: 100%;
     position: absolute;
     top: 90vh;
 
-    .reviews-set-2 {
+    .reviews-mobile-set-2 {
       position: sticky;
       top: 20vh;
       display: flex;
       align-items: center;
       opacity: 0;
       transition: 0.45s;
-      // border: 1px solid green;
 
-      .reviews-text2 {
+      .reviews-mobile-text2 {
         color: var(--beige);
         width: 100%;
         max-width: 110rem;
         margin: 0 auto;
-        padding: 4rem;
+        padding-top: 15rem;
         display: flex;
         flex-direction: column;
         justify-content: center;

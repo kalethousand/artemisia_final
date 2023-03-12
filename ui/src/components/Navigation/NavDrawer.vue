@@ -13,6 +13,7 @@
     >
       <NavigationBtn :open="open" variety="open" @click="handleInput" />
       <NavigationAction
+        :is-mobile="isMobile"
         :active="active"
         :anchors="anchors"
         :breakpoint="breakpoint"
@@ -43,6 +44,10 @@ export default {
       default: null,
     },
     open: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
       type: Boolean,
       default: false,
     },

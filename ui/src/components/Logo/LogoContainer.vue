@@ -1,12 +1,16 @@
 <template>
   <div class="logo-container">
-    <div class="logo-content">
-      <LogoBorder />
-      <!-- <div class="garbage"> -->
+    <!-- <div class="logo-content"> -->
+    <!-- <LogoBorder /><div class="garbage"> -->
 
-      <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <div class="logo-border">
+      <LogoBorder />
+      <LogoBorderText class="wrap-around-text" />
     </div>
-    <LogoBorderText :window-height="window.innerHeight" :window-width="window.innerWidth" />
+    <!-- <LogoBorderText :window-height="window.innerHeight" :window-width="window.innerWidth" /> -->
+    -->
     <div class="logo-image"></div>
     <div class="logo-letters-container">
       <div
@@ -105,7 +109,7 @@ export default {
 
 <style lang="scss" scoped>
 .logo-container {
-  border: 1px solid green;
+  // border: 1px solid green;
   position: absolute;
   top: 0;
   height: 100vh;
@@ -121,7 +125,7 @@ export default {
 }
 
 .logo-content {
-  border: 2px solid red;
+  // border: 2px solid red;
   height: 50%;
   // position: relative;
   // max-height: 60rem;
@@ -157,22 +161,35 @@ export default {
   //   // animation-delay: 5.5s;
   // }
 }
+// .logo-image {
+//   // border: 3px solid pink;
+//   position: absolute;
+//   height: 50%;
+//   width: 50%;
+//   opacity: 0;
+//   background: url("@/assets/logoLineWhite.png") no-repeat, center;
+//   background-size: contain;
+//   background-position: center;
+//   animation: opacity 0.5s linear forwards;
+//   animation-delay: 3.3s;
+//   transform: scale(0.9);
+// }
 .logo-image {
-  border: 3px solid pink;
   position: absolute;
-  height: 50%;
-  width: 50%;
   opacity: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
   background: url("@/assets/logoLineWhite.png") no-repeat, center;
   background-size: contain;
   background-position: center;
+  transform: scale(0.98);
   animation: opacity 0.5s linear forwards;
   animation-delay: 3.3s;
-  transform: scale(0.9);
 }
 
 .logo-letters-container {
-  border: 3px solid orange;
+  // border: 3px solid orange;
   height: 50%;
   width: 50%;
   position: absolute;

@@ -12,8 +12,13 @@ import { getCssVariableValue } from "./util/getCssVariableValue"
 export default Vue.extend({
   components: { ContentContainer },
   beforeMount() {
+    this.$vuetify.theme.options.customProperties = true
     this.$vuetify.theme.themes.light.primary = getCssVariableValue("--primary")
     this.$vuetify.theme.themes.light.secondary = getCssVariableValue("--secondary")
+    this.$vuetify.theme.themes.dark.primary = getCssVariableValue("--primary")
+    this.$vuetify.theme.themes.dark.secondary = getCssVariableValue("--secondary")
+    this.$vuetify.theme.themes.light.input = getCssVariableValue("--primary")
+    this.$vuetify.theme.themes.light.background = getCssVariableValue("--beige")
   },
 })
 </script>

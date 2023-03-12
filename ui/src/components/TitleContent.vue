@@ -2,9 +2,12 @@
   <div class="title-text-container" :style="`${raiseZIndex}`">
     <div :class="setActiveClass('title-text-content')">
       <div :class="`${breakpoint.name}-title`" :style="`color: var(--beige); `">
-        <TextTransition :intersection-ratio="intersectionRatio" variety="move-y" style="padding-left: 1rem">{{
-          titleText
-        }}</TextTransition>
+        <TextTransition
+          :intersection-ratio="intersectionRatio"
+          variety="move-y"
+          :style="isMobile ? '' : 'padding-left: 1rem'"
+          >{{ titleText }}</TextTransition
+        >
       </div>
       <div :class="`${breakpoint.name}-subtitle`">
         <TextTransition
@@ -28,6 +31,10 @@ export default {
   components: { TextTransition },
   props: {
     isActive: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
       type: Boolean,
       default: false,
     },

@@ -1,9 +1,14 @@
 <template>
-  <div id="slide" class="gallery-slide1">
-    <div class="gallery-slide-title">
+  <div id="slide" :class="isMobile ? 'gallery-slide1 gallery-slide-mobile' : 'gallery-slide1'">
+    <div :class="isMobile ? 'gallery-slide-title slide-mobile' : 'gallery-slide-title'">
       <h3>Angela &amp; Graham</h3>
     </div>
-    <div v-for="(image, index) in images" :key="image.id" class="gallery-slide-img" @click="handleSelectImg(image)">
+    <div
+      v-for="(image, index) in images"
+      :key="image.id"
+      :class="isMobile ? 'gallery-slide-img mobile-slide-img' : 'gallery-slide-img'"
+      @click="handleSelectImg(image)"
+    >
       <v-img
         eager
         :src="image.src"
@@ -12,7 +17,7 @@
       >
       </v-img>
     </div>
-    <GalleryDialog :dialog-open="isDialogOpen" :image="selectedImage" @close="closeModal()" />
+    <GalleryDialog :dialog-open="isDialogOpen" :image="selectedImage" :is-mobile="isMobile" @close="closeModal()" />
   </div>
 </template>
 
@@ -29,6 +34,10 @@ export default {
   components: { GalleryDialog },
   props: {
     active: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
       type: Boolean,
       default: false,
     },
@@ -84,9 +93,7 @@ export default {
   width: 100%;
   max-width: 120rem;
   margin: 0 auto;
-  // max-width: 154rem;
-  // margin: 0 auto;
-  padding: 8rem 2.5rem;
+  padding: 8rem 0rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,12 +102,16 @@ export default {
   column-gap: 1.75rem;
   position: relative;
 
+  .gallery-slide-mobile {
+    padding: 0rem;
+  }
+
   .gallery-slide-title {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80vw;
+    width: 150%;
     top: -1rem;
     font-size: 4rem;
     letter-spacing: 4px;
@@ -110,6 +121,13 @@ export default {
     opacity: 0;
     transform: translateY(20px);
     animation: titleAnimation 1s cubic-bezier(0.92, -0.03, 0.35, 1) forwards;
+  }
+
+  .slide-mobile {
+    font-size: 2rem !important;
+    top: 0;
+    letter-spacing: 2px;
+    width: 180%;
   }
 
   .gallery-slide-title::before {
@@ -152,6 +170,11 @@ export default {
   }
 }
 
+.mobile-slide-img {
+  height: 18rem;
+  width: 35rem;
+}
+
 .gallery-slide-img:hover {
   height: 28rem;
   width: 34rem;
@@ -167,7 +190,6 @@ export default {
 }
 
 .img-no-show {
-  border: 1px solid red;
   position: absolute;
   top: 0;
   transform: translateY(29rem);

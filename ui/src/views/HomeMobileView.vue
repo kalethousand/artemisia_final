@@ -18,7 +18,7 @@
             >
               <v-img
                 :src="letter.src"
-                height="70"
+                height="50"
                 :width="setLetterWidth(letter.letter)"
                 max-width="110"
                 contain
@@ -65,6 +65,14 @@ export default {
       type: Number,
       default: 0,
     },
+    windowHeight: {
+      type: String,
+      default: null,
+    },
+    windowWidth: {
+      type: String,
+      default: null,
+    },
   },
   data: () => ({
     letters: [
@@ -79,10 +87,18 @@ export default {
       { src: LetterA, letter: "a" },
     ],
   }),
-  computed: {},
+  // computed: {
+  //   handleResize() {
+  //     this.window.innerHeight = window.innerHeight
+  //     this.window.innerWidth = window.innerWidth
+  //   },
+  // },
   watch: {},
   mounted() {},
   methods: {
+    setLogoImageSize() {
+      "left: 5.2vh;"
+    },
     hasLetterM(string) {
       return string.includes("letterM")
     },
@@ -91,9 +107,9 @@ export default {
         return "45"
       }
       if (letter === "r" || letter === "m") {
-        return "70"
+        return "50"
       }
-      return "60"
+      return "40"
     },
   },
 }
@@ -115,8 +131,9 @@ export default {
   background-attachment: fixed;
   height: 210vh;
   width: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  top: 0;
+  // overflow-y: hidden;
+  // overflow-x: hidden;
 }
 
 .background-container {
@@ -141,20 +158,23 @@ export default {
 }
 
 .logo {
-  height: 70%;
+  border: 1px solid red;
+  height: 100%;
   max-height: 60rem;
-  width: 75%;
+  width: 100%;
   max-width: 45rem;
-  position: -webkit-sticky;
-  position: sticky;
+  position: relative;
+  // position: -webkit-sticky;
+  // position: sticky;
   top: 0px;
   z-index: 2;
 
   .logo-border {
-    position: absolute;
+    // position: absolute;
     top: 0;
-    height: 100%;
-    width: 100%;
+    margin: 0 auto;
+    height: 60rem;
+    width: 32.5rem;
     stroke-dasharray: 2000;
     stroke-dashoffset: 2000;
     animation: dash 3.5s linear forwards;
@@ -168,21 +188,24 @@ export default {
     position: absolute;
     top: 0;
     opacity: 0;
-    left: -30rem;
+    left: -66.5%;
     animation: borderText 0.25s linear forwards;
     animation-delay: 5.5s;
   }
 
   .logo-image {
-    position: absolute;
+    // position: absolute;
+    position: relative;
     opacity: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
+    top: -100.5%;
+    // left: 5%;
+    margin: 0 auto;
+    height: 60rem;
+    width: 32.5rem;
     background: url("../assets/logoLineWhite.png") no-repeat, center;
     background-size: contain;
     background-position: center;
-    transform: scale(0.98);
+    transform: scale(0.97);
     animation: opacity 0.5s linear forwards;
     animation-delay: 3.3s;
   }
@@ -191,7 +214,7 @@ export default {
     height: 30%;
     width: 100%;
     position: absolute;
-    bottom: -12vh;
+    bottom: -20%;
     left: 0%;
     display: flex;
     justify-content: space-evenly;
@@ -243,11 +266,11 @@ export default {
 
 @keyframes borderText {
   0% {
-    transform: scale(0.8);
+    transform: scale(0.6);
     opacity: 0;
   }
   100% {
-    transform: scale(0.85);
+    transform: scale(0.6);
     opacity: 0.8;
   }
 }

@@ -1,12 +1,12 @@
 <template>
-  <div class="gallery-view-container">
+  <div class="gallery-mobile-view-container">
     <ContentTransition
       :is-active="galleryContentIsActive"
       no-translate-y
-      container-id="gallery-content"
-      class="gallery-content"
+      container-id="gallery-mobile-content"
+      class="gallery-mobile-content"
     >
-      <div id="gallery-carousel" class="gallery-container">
+      <div id="gallery-mobile-carousel" class="gallery-mobile-container">
         <v-carousel
           :continuous="false"
           :cycle="cycle"
@@ -16,22 +16,22 @@
           @change="event => handleCarouselEvent(event)"
         >
           <v-carousel-item transition="fade-transition" reverse-transition="fade-transition">
-            <AngelaGraham :active="galleryContent.isVisible" class="gallery-slide" />
+            <AngelaGraham :active="galleryContent.isVisible" :is-mobile="isMobile" class="gallery-mobile-slide" />
           </v-carousel-item>
           <v-carousel-item transition="fade-transition" reverse-transition="fade-transition">
-            <CaitlinDillion class="gallery-slide" />
+            <CaitlinDillion :is-mobile="isMobile" class="gallery-mobile-slide" />
           </v-carousel-item>
           <v-carousel-item transition="fade-transition" reverse-transition="fade-transition">
-            <ElyseScott class="gallery-slide" />
+            <ElyseScott :is-mobile="isMobile" class="gallery-mobile-slide" />
           </v-carousel-item>
           <v-carousel-item transition="fade-transition" reverse-transition="fade-transition">
-            <TiannaZane class="gallery-slide" />
+            <TiannaZane :is-mobile="isMobile" class="gallery-mobile-slide" />
           </v-carousel-item>
           <v-carousel-item transition="fade-transition" reverse-transition="fade-transition">
-            <WynneBirthday class="gallery-slide" />
+            <WynneBirthday :is-mobile="isMobile" class="gallery-mobile-slide" />
           </v-carousel-item>
           <v-carousel-item transition="fade-transition" reverse-transition="fade-transition">
-            <SavannahShoot class="gallery-slide" />
+            <SavannahShoot :is-mobile="isMobile" class="gallery-mobile-slide" />
           </v-carousel-item>
         </v-carousel>
       </div>
@@ -69,7 +69,7 @@ export default {
     },
   },
   data: () => ({
-    idArray: ["gallery-content"],
+    idArray: ["gallery-mobile-content"],
     activeSlide: null,
     contentElements: null,
     cycle: false,
@@ -91,6 +91,7 @@ export default {
   },
   methods: {
     fetchContentElements() {
+      // const idArray = [`gallery-mobile-view`]
       this.contentElements = this.idArray.map(el => document.getElementById(el))
     },
     initObserver() {
@@ -101,7 +102,7 @@ export default {
       }
       const handleIntersectionEvent = entries => {
         entries.forEach(entry => {
-          if (entry.target.id === `gallery-content`) {
+          if (entry.target.id === `gallery-mobile-content`) {
             this.galleryContent.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.galleryContent.isVisible = this.entryVisible(entry.intersectionRatio)
           }
@@ -127,23 +128,23 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.gallery-view-container {
+.gallery-mobile-view-container {
   height: 200vh;
   width: 100%;
   position: relative;
   z-index: 6;
 
-  .gallery-content {
+  .gallery-mobile-content {
     height: 180rem;
     width: 100%;
     position: absolute;
     top: -10rem;
 
-    .gallery-container {
+    .gallery-mobile-container {
+      height: 120rem;
       width: 100%;
       position: sticky;
-      display: flex;
-      top: 24vh;
+      top: 15vh;
       opacity: 1;
       transition-delay: 0.5s;
       transition: 0.5s;
@@ -151,7 +152,7 @@ export default {
   }
 }
 
-.gallery-carousel {
+.gallery-mobile-carousel {
   opacity: 0;
   height: 60%;
   transition-delay: 0.5s;

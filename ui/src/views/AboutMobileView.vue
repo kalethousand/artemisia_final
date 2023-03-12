@@ -52,10 +52,6 @@ export default {
     idArray: ["about-content-set-1", "about-image-1", "about-content-set-2"],
     contentElements: null,
     observer: null,
-    about: {
-      intersectionRatio: null,
-      isVisible: false,
-    },
     aboutContentSet1: {
       intersectionRatio: null,
       isVisible: false,
@@ -78,7 +74,6 @@ export default {
       if (this.aboutImageSet1.isVisible) return "background-active"
       return ""
     },
-
     set2IsActive() {
       if (this.aboutContentSet2.isVisible) return true
       return false
@@ -90,6 +85,7 @@ export default {
   },
   methods: {
     fetchContentElements() {
+      // const idArray = [`about-view`]
       this.contentElements = this.idArray.map(el => document.getElementById(el))
     },
     initObserver() {
@@ -122,7 +118,7 @@ export default {
       return ratio
     },
     entryVisible(intersectionRatio) {
-      if (intersectionRatio >= 0.3) {
+      if (intersectionRatio >= 0.2) {
         return true
       }
       return false
@@ -137,29 +133,27 @@ export default {
   position: relative;
 
   .about-content-set-1 {
-    height: 130rem;
+    height: 90rem;
     width: 100%;
-    padding-left: 5rem;
-    position: absolute;
-    top: 0;
-
+    position: relative;
+    top: -15vh;
     .about-background-image-container {
-      height: 100vh;
+      height: 30vh;
       width: 100%;
       position: sticky;
-      top: 29vh;
+      top: 20vh;
       opacity: 1;
       transition-delay: 0.5s;
       transition: 0.5s;
       max-width: 120rem;
       margin: 0 auto;
+
       .about-content-image {
         position: absolute;
         top: 0;
-        left: 20%;
-        height: 75%;
-        width: 75%;
-        min-width: 72rem;
+        right: 0.5%;
+        height: 45vh;
+        width: 98%;
         background: linear-gradient(to top left, rgba(0, 11, 17, 0.4), transparent 100%),
           linear-gradient(to bottom right, rgba(0, 11, 17, 0.4), transparent 100%),
           url("../assets/images/kayteeBio/kayteeBioAssetImage.png");
@@ -169,11 +163,10 @@ export default {
 
       .about-background-image {
         position: absolute;
-        top: 0;
-        left: 19%;
-        height: 78%;
-        width: 78%;
-        min-width: 74rem;
+        top: -1%;
+        right: 0%;
+        height: 48vh;
+        width: 100%;
         background: url("../assets/images/kayteeBio/kayteeBioImageContainer.png");
         background-repeat: no-repeat;
         background-size: cover;
@@ -189,17 +182,14 @@ export default {
   .about-content-set-2 {
     height: 120rem;
     width: 100%;
-    margin: 0 auto;
-    max-width: 120rem;
     position: relative;
-    top: 0;
+    top: -58vh;
 
     .about-set-2 {
       position: sticky;
-      top: 35vh;
+      top: 68vh;
       display: flex;
       align-items: center;
-      width: 57.5rem;
 
       .about-text-2 {
         color: var(--beige);
@@ -209,7 +199,7 @@ export default {
         justify-content: center;
 
         .about-detail {
-          width: 45%;
+          width: 100%;
         }
       }
     }

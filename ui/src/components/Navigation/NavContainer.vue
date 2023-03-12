@@ -2,7 +2,13 @@
   <div class="navigation-container d-flex justify-center align-center">
     <NavigationBtn v-if="isNavigationCompressed" :open="open" variety="closed" @click="handleOpenNavigation" />
     <div v-else class="nav-action-container">
-      <NavigationAction :active="active" :anchors="anchors" :breakpoint="breakpoint" @navigation="handleNavigation" />
+      <NavigationAction
+        :active="active"
+        :is-mobile="isMobile"
+        :anchors="anchors"
+        :breakpoint="breakpoint"
+        @navigation="handleNavigation"
+      />
     </div>
   </div>
 </template>
@@ -30,16 +36,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
     navigationDrawerOpen: false,
   }),
   computed: {
     isNavigationCompressed() {
-      if (this.breakpoint.name === "sm" || this.breakpoint.name === "xs") {
-        return true
-      }
-      return false
+      return this.isMobile
     },
     navigationDisplay() {
       if (this.isNavigationCompressed) {

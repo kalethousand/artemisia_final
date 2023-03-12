@@ -1,40 +1,42 @@
 <template>
-  <div class="artemisia-view-container">
-    <ContentTransition :is-active="set1IsActive" container-id="artemisia-content-set-1" class="artemisia-content-set-1">
-      <div class="artemisia-set-1">
-        <div class="artemisia-text1">
+  <div class="artemisia-mobile-view-container">
+    <ContentTransition
+      :is-active="set1IsActive"
+      container-id="artemisia-mobile-content-set-1"
+      class="artemisia-mobile-content-set-1"
+    >
+      <div class="artemisia-mobile-set-1">
+        <div class="artemisia-mobile-text1">
           <p :class="`${breakpoint.name}-body`">
             The name Artemisia has a three tier meaning. Artemisia represents feelings and aesthetics that bring a well
             rounded, versatility and uniqueness to my design.
           </p>
         </div>
-      </div>
-    </ContentTransition>
-    <ContentTransition :is-active="true" container-id="artemisia-content-set-2" class="artemisia-content-set-2">
-      <div class="artemisia-set-2">
         <ImageTransition
-          id="artemisia-image-1"
+          id="artemisia-mobile-image-1"
           :is-active="imageSet1IsActive"
-          class="artemisia-image1"
+          class="artemisia-mobile-image1"
           content-image="asset1/assetImage1.png"
           container-image="asset1/asset1Container.png"
         />
-        <div class="artemisia-text2">
-          <p :class="`${breakpoint.name}-body`">
+      </div>
+    </ContentTransition>
+    <ContentTransition
+      :is-active="true"
+      container-id="artemisia-mobile-content-set-2"
+      class="artemisia-mobile-content-set-2"
+    >
+      <div class="artemisia-mobile-set-2">
+        <div class="artemisia-mobile-text2">
+          <p :class="`${breakpoint.name}-body`" style="padding-bottom: 2rem">
             Artemisia the painter (Artemisia Gentileschi) painting during the 17th century, she was influenced by the
             dark baroque style, her rich colors are romantic and moody. Artemisia painted strong allegorical women in a
             time when women were not allowed to paint. She was a survivor and a radical.
           </p>
-          <p :class="`${breakpoint.name}-body`">
+          <p :class="`${breakpoint.name}-body`" style="padding-bottom: 2rem">
             Artemisia the goddess; a strong feminine figure. She is goddess of the moon, the hunt and wild animals. She
             represents strength and grace. She embodies a natural, organic, wild and feminine style.
           </p>
-        </div>
-      </div>
-    </ContentTransition>
-    <ContentTransition :is-active="true" container-id="artemisia-content-set-3" class="artemisia-content-set-3">
-      <div class="artemisia-set-3">
-        <div class="artemisia-text3">
           <p :class="`${breakpoint.name}-body`">
             Artemisia the plant; A nod to my years behind a bar. Artemisia is of the daisy family but notoriously known
             as Artemisia absinthium or wormwood in Absinthe. From the Middle Ages to now it has been used in spirits,
@@ -42,22 +44,32 @@
             sharing.
           </p>
         </div>
-        <div class="artemisia-image2">
+      </div>
+    </ContentTransition>
+    <ContentTransition
+      :is-active="true"
+      container-id="artemisia-mobile-content-set-3"
+      class="artemisia-mobile-content-set-3"
+    >
+      <div class="artemisia-mobile-set-3">
+        <div class="artemisia-mobile-image2">
           <ImageTransition
-            id="artemisia-image-2"
+            id="artemisia-mobile-image-2"
             :is-active="imageSet2IsActive"
-            class="artemisia-image-2"
+            class="artemisia-mobile-image-2"
             content-image="asset2/assetImage2.png"
             container-image="asset2/asset2Container.png"
-            content-max-width="72.6rem"
-            content-min-width="72.6rem"
           />
         </div>
       </div>
     </ContentTransition>
-    <ContentTransition :is-active="true" container-id="artemisia-content-set-4" class="artemisia-content-set-4">
-      <div class="artemisia-set-4">
-        <div class="artemisia-text4">
+    <ContentTransition
+      :is-active="true"
+      container-id="artemisia-mobile-content-set-4"
+      class="artemisia-mobile-content-set-4"
+    >
+      <div class="artemisia-mobile-set-4">
+        <div class="artemisia-mobile-text4">
           <p :class="`${breakpoint.name}-body`">
             I channel these influences into my design work with flowers to create something unique. The crossroad
             between art and history is where great stories and moments are born. I want each design and every flower to
@@ -65,9 +77,9 @@
           </p>
         </div>
         <ImageTransition
-          id="artemisia-image-3"
+          id="artemisia-mobile-image-3"
           :is-active="imageSet3IsActive"
-          class="artemisia-image-3"
+          class="artemisia-mobile-image-3"
           content-image="asset3/assetImage3.png"
           container-image="asset3/asset3container.png"
         />
@@ -101,7 +113,12 @@ export default {
     },
   },
   data: () => ({
-    idArray: ["artemisia-content-set-1", "artemisia-image-1", "artemisia-image-2", "artemisia-image-3"],
+    idArray: [
+      "artemisia-mobile-content-set-1",
+      "artemisia-mobile-image-1",
+      "artemisia-mobile-image-2",
+      "artemisia-mobile-image-3",
+    ],
     contentElements: null,
     observer: null,
     artemisia: {
@@ -149,7 +166,6 @@ export default {
   },
   methods: {
     fetchContentElements() {
-      // const idArray = [`artemisia-view`]
       this.contentElements = this.idArray.map(el => document.getElementById(el))
     },
     initObserver() {
@@ -160,19 +176,19 @@ export default {
       }
       const handleIntersectionEvent = entries => {
         entries.forEach(entry => {
-          if (entry.target.id === `artemisia-content-set-1`) {
+          if (entry.target.id === `artemisia-mobile-content-set-1`) {
             this.artemisiaContentSet1.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.artemisiaContentSet1.isVisible = this.entryVisible(entry.intersectionRatio)
           }
-          if (entry.target.id === `artemisia-image-1`) {
+          if (entry.target.id === `artemisia-mobile-image-1`) {
             this.artemisiaImageSet1.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.artemisiaImageSet1.isVisible = this.entryVisible(entry.intersectionRatio)
           }
-          if (entry.target.id === `artemisia-image-2`) {
+          if (entry.target.id === `artemisia-mobile-image-2`) {
             this.artemisiaImageSet2.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.artemisiaImageSet2.isVisible = this.entryVisible(entry.intersectionRatio)
           }
-          if (entry.target.id === `artemisia-image-3`) {
+          if (entry.target.id === `artemisia-mobile-image-3`) {
             this.artemisiaImageSet3.intersectionRatio = this.fetchIntersectionRatio(entry)
             this.artemisiaImageSet3.isVisible = this.entryVisible(entry.intersectionRatio)
           }
@@ -196,133 +212,109 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.artemisia-view-container {
-  height: 600vh;
+.artemisia-mobile-view-container {
+  height: 500vh;
   width: 100%;
   position: relative;
 
-  .artemisia-content-set-1 {
-    height: 80rem;
+  .artemisia-mobile-content-set-1 {
+    height: 170rem;
     width: 100%;
+    margin-bottom: 10rem;
 
-    .artemisia-set-1 {
+    .artemisia-mobile-set-1 {
       position: sticky;
-      top: 35vh;
+      top: 25vh;
       display: flex;
       align-items: center;
+      flex-direction: column;
 
-      .artemisia-text1 {
+      .artemisia-mobile-text1 {
         color: var(--beige);
         width: 100%;
-        max-width: 100rem;
-        padding: 6rem 8rem;
-        margin: 0 auto;
+        padding: 0rem 2.75rem;
         display: flex;
         justify-content: center;
+      }
+
+      .artemisia-mobile-image1 {
+        width: 200%;
+        height: 200%;
+        position: relative;
+        top: 0rem;
       }
     }
   }
 
-  .artemisia-content-set-2 {
-    height: 125rem;
+  .artemisia-mobile-content-set-2 {
+    height: 75rem;
     width: 100%;
     display: flex;
-    margin-bottom: 20rem;
 
-    .artemisia-set-2 {
-      height: 85rem;
+    .artemisia-mobile-set-2 {
+      height: 225rem;
       position: sticky;
       top: 0vh;
       width: 100%;
       display: flex;
       justify-content: center;
+      flex-direction: column;
+      align-items: center;
 
-      .artemisia-image1 {
-        width: 70%;
-        min-width: 70rem;
-        height: 100%;
-        position: absolute;
-        right: 32%;
-      }
-
-      .artemisia-text2 {
+      .artemisia-mobile-text2 {
         color: var(--beige);
-        width: 45%;
-        max-width: 48rem;
+        width: 100%;
         height: 100%;
-        padding: 2rem;
-        position: absolute;
-        left: 55%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: flex-end;
+        padding: 0rem 2.75rem;
       }
     }
   }
 
-  .artemisia-content-set-3 {
-    height: 140rem;
+  .artemisia-mobile-content-set-3 {
+    height: 70rem;
     width: 100%;
     display: flex;
 
-    .artemisia-set-3 {
-      height: 85rem;
+    .artemisia-mobile-set-3 {
+      height: 70rem;
       position: sticky;
       top: 0vh;
       width: 100%;
       display: flex;
       align-items: center;
 
-      .artemisia-text3 {
-        color: var(--beige);
-        width: 40%;
-        height: 100%;
-        padding: 2rem;
+      .artemisia-mobile-image2 {
+        width: 140%;
+        height: 140%;
+        position: relative;
+        left: 10%;
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: flex-end;
-
-        p {
-          position: absolute;
-          width: 38%;
-          right: 56%;
-          z-index: 2;
-        }
-      }
-
-      .artemisia-image2 {
-        width: 65%;
-        height: 100%;
-        position: absolute;
-        right: -10%;
       }
     }
   }
 
-  .artemisia-content-set-4 {
-    height: 125rem;
+  .artemisia-mobile-content-set-4 {
+    height: 100rem;
     width: 100%;
     display: flex;
 
-    .artemisia-set-4 {
+    .artemisia-mobile-set-4 {
       height: 85rem;
       position: sticky;
       top: 0vh;
       width: 100%;
 
-      .artemisia-text4 {
+      .artemisia-mobile-text4 {
         color: var(--beige);
-        width: 60%;
+        width: 100%;
         margin: 0 auto;
-        padding: 8rem 0;
+        padding: 3rem 2.75rem 8rem 2.75rem;
       }
 
-      .artemisia-image-3 {
-        width: 50rem;
-        height: 50rem;
-        margin: 0 auto;
+      .artemisia-mobile-image-3 {
+        width: 35rem;
+        height: 35rem;
+        margin: auto;
       }
     }
   }

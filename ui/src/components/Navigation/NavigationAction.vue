@@ -6,6 +6,7 @@
         :key="index"
         text
         class="nav-menu"
+        :style="setPadding"
         :class="{ active: active === anchor }"
         @click="handleNavigation(anchor)"
       >
@@ -30,17 +31,26 @@ export default {
       type: Object,
       default: null,
     },
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     isCompressed() {
-      if (this.breakpoint.name === "xs" || this.breakpoint.name === "sm") return true
-      return false
+      return this.isMobile
     },
     setFlexStyles() {
-      if (this.isCompressed) {
+      if (this.isMobile) {
         return "justify-content: space-evenly; flex-direction: column; width: 100%; height: 40%;"
       }
       return "justify-content: flex-end;"
+    },
+    setPadding() {
+      if (window.innerWidth < 1000) {
+        return `padding: 0 0.4rem !important;`
+      }
+      return "padding: 0 0.8rem !important;"
     },
   },
   methods: {
@@ -84,33 +94,32 @@ export default {
     content: "";
     background-color: var(--green);
     position: absolute;
-    height: 5px;
+    height: 0.5rem;
     width: 100% !important;
     z-index: 5;
-    bottom: -10px;
+    bottom: -1rem;
   }
 }
 
 .nav-menu {
-  letter-spacing: 2px;
+  letter-spacing: 0.2rem;
   color: var(--beige) !important;
-  margin: 0 1rem;
+  margin: 1rem 1rem;
   transition: 0.25s ease-in-out;
   transition-delay: 0.15s;
   position: relative;
 
   .anchor-text {
-    font-weight: 500;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.4rem;
   }
 
   .anchor-text:before {
     content: "";
     position: absolute;
-    height: 5px;
-    width: 0px;
+    height: 0.5rem;
+    width: 0;
     z-index: 5;
-    bottom: -10px;
+    bottom: -1rem;
     transition: 0.5s ease-in-out;
     transition-delay: 0.15s;
   }
