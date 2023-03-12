@@ -277,7 +277,7 @@
 
 <script>
 import ViewComponent4 from "@/views/ViewComponent4.vue"
-import router from "@/router"
+// import router from "@/router"
 import HomeView from "@/views/HomeView.vue"
 import ArtemisiaView from "@/views/ArtemisiaView.vue"
 import ReviewsView from "@/views/ReviewsView.vue"
@@ -347,7 +347,7 @@ export default {
   },
   beforeMount() {
     window.addEventListener("resize", this.handleResize)
-    window.addEventListener("popstate", e => this.handlePopState(e))
+    // window.addEventListener("popstate", e => this.handlePopState(e))
     this.handleResize()
   },
   mounted() {
@@ -428,27 +428,27 @@ export default {
       return contentObjects
     },
 
-    setupComponentTopsWithRouter() {
-      const routes = router.getRoutes()
-      for (let i = 0; i < routes.length; i += 1) {
-        const route = routes[i]
-        if (route.meta.id !== undefined) {
-          const [contentElement] = this.components.filter(component => component.id === route.meta.id)
-          routes[i].meta.topPosition = contentElement.top
-        }
-      }
-    },
+    // setupComponentTopsWithRouter() {
+    //   const routes = router.getRoutes()
+    //   for (let i = 0; i < routes.length; i += 1) {
+    //     const route = routes[i]
+    //     if (route.meta.id !== undefined) {
+    //       const [contentElement] = this.components.filter(component => component.id === route.meta.id)
+    //       routes[i].meta.topPosition = contentElement.top
+    //     }
+    //   }
+    // },
 
-    handleElementActiveHistoryChange(componentId) {
-      // eslint-disable-next-line no-restricted-globals
-      router.push(`/${componentId}`).catch(() => {})
-    },
+    // handleElementActiveHistoryChange(componentId) {
+    //   // eslint-disable-next-line no-restricted-globals
+    //   router.push(`/${componentId}`).catch(() => {})
+    // },
 
-    handlePopState(event) {
-      const id = event.currentTarget.location.pathname.substring(1)
-      document.getElementById(id)
-      this.scrollToSection(id)
-    },
+    // handlePopState(event) {
+    //   const id = event.currentTarget.location.pathname.substring(1)
+    //   document.getElementById(id)
+    //   this.scrollToSection(id)
+    // },
 
     handleOpenNavigation(value) {
       setTimeout(() => {
