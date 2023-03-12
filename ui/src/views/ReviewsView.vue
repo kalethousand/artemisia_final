@@ -178,7 +178,6 @@ export default {
     transition: 0.5s;
 
     .reviews-content-image {
-      border: 1px solid blue;
       position: absolute;
       top: -10vh;
       height: 220vh;
@@ -209,10 +208,8 @@ export default {
   }
 
   .reviews-content-set-1 {
-    // border: 1px solid blue;
     height: 90rem;
     width: 100%;
-    // position: relative;
     position: absolute;
     top: -10vh;
     padding-top: 5vh;
@@ -222,7 +219,6 @@ export default {
       top: 32vh;
       display: flex;
       align-items: center;
-      // border: 1px solid green;
 
       .reviews-text1 {
         color: var(--beige);
@@ -238,8 +234,6 @@ export default {
   }
 
   .reviews-content-set-2 {
-    // border: 1px solid blue;
-    // height: 60rem;
     width: 100%;
     position: absolute;
     top: 90vh;
@@ -251,7 +245,6 @@ export default {
       align-items: center;
       opacity: 0;
       transition: 0.45s;
-      // border: 1px solid green;
 
       .reviews-text2 {
         color: var(--beige);

@@ -355,8 +355,8 @@ export default {
       this.components = this.fetchComponentTops()
       this.totalHeight = this.findTotalHeight()
     }
-    if (this.components !== [] && window.location.href !== "http://localhost:8080/") {
-      const id = window.location.href.replace("http://localhost:8080/", "")
+    if (this.components !== [] && window.location.href !== "http://artemisia-detroit.netlify.app/") {
+      const id = window.location.href.replace("http://artemisia-detroit.netlify.app/", "")
       const scrollAmount = this.setScrollAmount(id)
       const app = document.getElementById("app")
       app.scrollTo({ top: scrollAmount, left: 0 })
